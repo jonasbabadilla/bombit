@@ -51,6 +51,13 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
 func main() {
     
 
+	img, _, err := image.Decode(bytes.NewReader(images.Gophers_jpg))
+	if err != nil {
+		log.Fatal(err)
+	}
+	gophersImage = ebiten.NewImageFromImage(img)
+
+	
 	ebiten.SetWindowSize(screenWidth, screenHeight)
 	ebiten.SetWindowTitle("Rotate (Ebiten Demo)")
 	if err := ebiten.RunGame(&Game{}); err != nil {
