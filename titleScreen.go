@@ -22,7 +22,7 @@ import (
 
 
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/jonasbabadilla/bombit/sprite_0.png"
+	"github.com/jonasbabadilla/bombit"
 )
 
 const (
