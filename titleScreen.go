@@ -19,6 +19,10 @@ package main
 
 import (
 	"log"
+	"bytes"
+	"image"
+	_ "image/png"
+	"math"
 
 
 	"github.com/hajimehoshi/ebiten/v2"
@@ -41,7 +45,8 @@ func (g *Game) Update() error {
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
-
+	w, h := button.Size()
+	op := &ebiten.DrawImageOptions{}
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
@@ -51,11 +56,11 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
 func main() {
     
 
-	img, _, err := image.Decode(bytes.NewReader(images.sprite_0_png))
+	img, _, err := image.Decode(bytes.NewReader(images.startButton_png))
 	if err != nil {
 		log.Fatal(err)
 	}
-	gophersImage = ebiten.NewImageFromImage(img)
+	button = ebiten.NewImageFromImage(img)
 
 	
 	ebiten.SetWindowSize(screenWidth, screenHeight)
