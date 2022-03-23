@@ -51,7 +51,7 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
 func main() {
     
 
-	img, _, err := image.Decode(bytes.NewReader(images.Gophers_jpg))
+	img, _, err := image.Decode(bytes.NewReader(images.sprite_0_png))
 	if err != nil {
 		log.Fatal(err)
 	}
