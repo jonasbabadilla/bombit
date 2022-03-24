@@ -20,8 +20,7 @@ func mouseInput() *InputGame {
 // Update - display x, y coordinates
 func (g *InputGame) Update() error {
 	if ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) {
-		var i InputGame
-		i.pressed = true
+		g.pressed = true
 	}
 	return nil
 }
