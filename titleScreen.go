@@ -33,7 +33,8 @@ var (
 )
 
 func (g *Game) Update() error {
-
+	x, y := CursorPosition()
+	op.GeoM.Translate(x, y)
 	return nil
 }
 
@@ -79,4 +80,6 @@ func main() {
 	if err := ebiten.RunGame(&Game{}); err != nil {
 		log.Fatal(err)
 	}
+
+	
 }
