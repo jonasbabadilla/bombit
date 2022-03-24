@@ -18,15 +18,15 @@
 package main
 
 import (
-	"log"
 	"bytes"
 	"image"
 	_ "image/png"
-	"math"
+	"log"
 
+	//"math"
 
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/jonasbabadilla/bombit/images"
+	"github.com/jonasbabadilla/bombit/imageResources"
 )
 
 const (
@@ -34,10 +34,12 @@ const (
 	screenHeight = 480
 )
 
-
 type Game struct {
-
 }
+
+var (
+	button *ebiten.Image
+)
 
 func (g *Game) Update() error {
 
@@ -47,6 +49,16 @@ func (g *Game) Update() error {
 func (g *Game) Draw(screen *ebiten.Image) {
 	w, h := button.Size()
 	op := &ebiten.DrawImageOptions{}
+
+	// Move the image's center to the screen's upper-left corner.
+	// This is a preparation for rotating. When geometry matrices are applied,
+	// the origin point is the upper-left corner.
+	op.GeoM.Translate(-float64(w)/2, -float64(h)/2)
+
+	// Move the image to the screen's center.
+	op.GeoM.Translate(screenWidth/2, screenHeight/2)
+
+	screen.DrawImage(button, op)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
@@ -54,15 +66,13 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
 }
 
 func main() {
-    
 
-	img, _, err := image.Decode(bytes.NewReader(images.startButton_png))
+	img, _, err := image.Decode(bytes.NewReader(imageResources.StartButton_png))
 	if err != nil {
 		log.Fatal(err)
 	}
 	button = ebiten.NewImageFromImage(img)
 
-	
 	ebiten.SetWindowSize(screenWidth, screenHeight)
 	ebiten.SetWindowTitle("Rotate (Ebiten Demo)")
 	if err := ebiten.RunGame(&Game{}); err != nil {
