@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 module github.com/jonasbabadilla/bombit
 
 go 1.18
@@ -15,3 +16,13 @@ require (
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
 	golang.org/x/sys v0.0.0-20210917161153-d61c044b1678 // indirect
 )
+=======
+module github.com/jonasbabadilla/bombit
+
+go 1.18
+
+require (
+
+    github.com/hajimehoshi/ebiten/v2
+)
+>>>>>>> fe3ccee20d5c8dbf66ffd229a18e3bfe8077d23f
