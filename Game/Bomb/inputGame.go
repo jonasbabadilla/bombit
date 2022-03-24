@@ -11,16 +11,21 @@ import (
 
 type InputGame struct {
 	pressed bool
+	mouseX int
+	mouseY int
 }
 
 func mouseInput() *InputGame {
 	return &InputGame{}
 }
 
-// Update - display x, y coordinates
+
 func (g *InputGame) Update() error {
 	if ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) {
 		g.pressed = true
+		g.mouseX, g.mouseY = ebiten.CursorPosition()
+	} else {
+		g.pressed = false
 	}
 	return nil
 }
