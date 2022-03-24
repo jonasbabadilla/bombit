@@ -31,9 +31,9 @@ type Game struct {
 var (
 	button *ebiten.Image
 )
-
+// Update - display x, y coordinates
 func (g *Game) Update() error {
-
+	
 	return nil
 }
 
