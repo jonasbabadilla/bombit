@@ -18,10 +18,10 @@ type Game struct {
 }
 
 func NewGame() (*Game, error) {
-	h := &Game{
+	g := &Game{
 		input: mouseInput(),
 	}
-	return h, nil
+	return g, nil
 }
 
 func (g *Game) Update() error {
