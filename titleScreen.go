@@ -1,24 +1,11 @@
-package main
+package bombIt
 
 import (
-	"bytes"
-	"image"
 	_ "image/png"
-	"log"
 
 	//"math"
-	
-	"github.com/hajimehoshi/ebiten/v2/internal/driver"
+
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/jonasbabadilla/bombit/imageResources"
-)
-
-type MouseButton = driver.MouseButton
-
-const (
-	MouseButtonLeft   MouseButton = driver.MouseButtonLeft
-	MouseButtonRight  MouseButton = driver.MouseButtonRight
-	MouseButtonMiddle MouseButton = driver.MouseButtonMiddle
 )
 
 const (
@@ -27,11 +14,19 @@ const (
 )
 
 type Game struct {
+	input *InputGame
 }
 
 var (
 	button *ebiten.Image
 )
+
+func (g *Game) NewGame() (*Game, error) {
+	h := &Game{
+		input: mouseInput(),
+	}
+	return h, nil
+}
 
 func (g *Game) Update() error {
 
@@ -58,26 +53,3 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
 }
 
 // mouse input
-func IsMouseButtonPressed(mouseButton MouseButton) bool {
-	return uiDriver().Input().IsMouseButtonPressed(mouseButton)
-}
-
-func CursorPosition() (x, y int) {
-	return uiDriver().Input().CursorPosition()
-}
-
-
-func main() {
-
-	img, _, err := image.Decode(bytes.NewReader(imageResources.StartButton_png))
-	if err != nil {
-		log.Fatal(err)
-	}
-	button = ebiten.NewImageFromImage(img)
-
-	ebiten.SetWindowSize(screenWidth, screenHeight)
-	ebiten.SetWindowTitle("Rotate (Ebiten Demo)")
-	if err := ebiten.RunGame(&Game{}); err != nil {
-		log.Fatal(err)
-	}
-}
