@@ -1,7 +1,7 @@
-module github.com/jonasbabadilla/bombit/v2
+module github.com/jonasbabadilla/bombit
 
 go 1.15
 
 require (
-  https://github.com/hajimehoshi/ebiten/v2 v2.2.5 // indirect
+  github.com/hajimehoshi/ebiten/v2 v2.2.5 // indirect
 )
