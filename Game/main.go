@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-
+	//testing
 	game, _ := bombIt.NewGame()
 	ebiten.SetWindowSize(640, 480)
 	ebiten.SetWindowTitle("Rotate (Ebiten Demo)")
