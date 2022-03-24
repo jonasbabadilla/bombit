@@ -73,7 +73,7 @@ func main() {
 		log.Fatal(err)
 	}
 	button = ebiten.NewImageFromImage(img)
-
+	
 	ebiten.SetWindowSize(screenWidth, screenHeight)
 	ebiten.SetWindowTitle("Rotate (Ebiten Demo)")
 	if err := ebiten.RunGame(&Game{}); err != nil {
