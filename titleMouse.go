@@ -15,7 +15,7 @@ import (
 )
 
 type MouseButton = driver.MouseButton
-
+ // boom
 const (
 	MouseButtonLeft   MouseButton = driver.MouseButtonLeft
 	MouseButtonRight  MouseButton = driver.MouseButtonRight
