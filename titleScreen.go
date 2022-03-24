@@ -74,7 +74,7 @@ func main() {
 	button = ebiten.NewImageFromImage(img)
 
 	ebiten.SetWindowSize(screenWidth, screenHeight)
-	ebiten.SetWindowTitle("Bomb It")
+	ebiten.SetWindowTitle("Bomb Itssssss")
 	if err := ebiten.RunGame(&Game{}); err != nil {
 		log.Fatal(err)
 	}
