@@ -21,7 +21,7 @@ var (
 	button *ebiten.Image
 )
 
-func (g *Game) NewGame() (*Game, error) {
+func NewGame() (*Game, error) {
 	h := &Game{
 		input: mouseInput(),
 	}
