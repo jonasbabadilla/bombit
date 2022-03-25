@@ -8,12 +8,16 @@ import (
 )
 
 // boom
+type vec struct {
+	x int
+	y int
+}
 
 type InputGame struct {
-	DirUp    bool
-	DirDown  bool
-	DirLeft  bool
-	DirRight bool
+	DirUp    vec
+	DirDown  vec
+	DirLeft  vec
+	DirRight vec
 }
 
 func keyInput() *InputGame {
@@ -24,24 +28,24 @@ func keyInput() *InputGame {
 func (g *InputGame) Update() error {
 
 	if ebiten.IsKeyPressed(ebiten.KeyArrowUp) {
-		g.DirUp = true
+		g.DirUp = vec{0, 1}
 	} else {
-		g.DirUp = false
+		g.DirUp = vec{0, 0}
 	}
 	if ebiten.IsKeyPressed(ebiten.KeyArrowDown) {
-		g.DirDown = true
+		g.DirDown = vec{0, -1}
 	} else {
-		g.DirDown = false
+		g.DirDown = vec{0, 0}
 	}
 	if ebiten.IsKeyPressed(ebiten.KeyArrowLeft) {
-		g.DirLeft = true
+		g.DirLeft = vec{-1, 0}
 	} else {
-		g.DirLeft = false
+		g.DirLeft = vec{0, 0}
 	}
 	if ebiten.IsKeyPressed(ebiten.KeyArrowRight) {
-		g.DirRight = true
+		g.DirRight = vec{1, 0}
 	} else {
-		g.DirRight = false
+		g.DirRight = vec{0, 0}
 	}
 
 	return nil
