@@ -1,21 +1,28 @@
 package bombIt
 
 import (
+	"bytes"
+	"image"
 	_ "image/png"
 
 	//"math"
 
-	"fmt"
-
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/jonasbabadilla/bombit/imageResources"
 )
 
 var g *Game
+
+var (
+	character *ebiten.Image
+)
 
 const (
 	screenWidth  = 640
 	screenHeight = 480
 )
+
+var options *ebiten.DrawImageOptions
 
 type Game struct {
 	input *InputGame
@@ -31,26 +38,24 @@ func NewGame() (*Game, error) {
 
 func (g *Game) Update() error {
 	g.input.Update()
-	if g.input.DirUp {
-		fmt.Println("Up")
-	}
-	if g.input.DirDown {
-		fmt.Println("Down")
-	}
-	if g.input.DirLeft {
-		fmt.Println("Left")
-	}
-	if g.input.DirRight {
-		fmt.Println("Right")
-	}
 	return nil
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
 
+	x, y := g.input.DirUp.x, g.input.DirUp.y
+	options = &ebiten.DrawImageOptions{}
+
+	options.GeoM.Translate(float64(-x), float64(-y))
+	screen.DrawImage(character, options)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
+
+	img, _, _ := image.Decode(bytes.NewReader(imageResources.StartButton_png))
+
+	character = ebiten.NewImageFromImage(img)
+
 	return screenWidth, screenHeight
 }
 
