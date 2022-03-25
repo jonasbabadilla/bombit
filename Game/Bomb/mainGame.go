@@ -3,8 +3,9 @@ package bombIt
 import (
 	_ "image/png"
 
-	"fmt"
 	//"math"
+
+	"fmt"
 
 	"github.com/hajimehoshi/ebiten/v2"
 )
@@ -22,22 +23,31 @@ type Game struct {
 
 func NewGame() (*Game, error) {
 	g = &Game{
-		input: mouseInput(),
+		input: keyInput(),
 	}
-	
+
 	return g, nil
 }
 
 func (g *Game) Update() error {
 	g.input.Update()
-	if g.input.pressed == true {
-		fmt.Println("Pressed", g.input.mouseX, g.input.mouseY)
+	if g.input.DirUp {
+		fmt.Println("Up")
+	}
+	if g.input.DirDown {
+		fmt.Println("Down")
+	}
+	if g.input.DirLeft {
+		fmt.Println("Left")
+	}
+	if g.input.DirRight {
+		fmt.Println("Right")
 	}
 	return nil
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
-	
+
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
