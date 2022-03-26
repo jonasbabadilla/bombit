@@ -21,22 +21,23 @@ func keyInput() *InputGame {
 func (g *InputGame) Update() error {
 
 	if ebiten.IsKeyPressed(ebiten.KeyArrowUp) {
-		g.DirUp = -1
+
+		g.DirUp = -2
 	} else {
 		g.DirUp = 0
 	}
 	if ebiten.IsKeyPressed(ebiten.KeyArrowDown) {
-		g.DirDown = 1
+		g.DirDown = 2
 	} else {
 		g.DirDown = 0
 	}
 	if ebiten.IsKeyPressed(ebiten.KeyArrowLeft) {
-		g.DirLeft = -1
+		g.DirLeft = -2
 	} else {
 		g.DirLeft = 0
 	}
 	if ebiten.IsKeyPressed(ebiten.KeyArrowRight) {
-		g.DirRight = 1
+		g.DirRight = 2
 	} else {
 		g.DirRight = 0
 	}
