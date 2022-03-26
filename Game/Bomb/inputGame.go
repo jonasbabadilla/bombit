@@ -7,8 +7,6 @@ import (
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
-// boom
-
 type InputGame struct {
 	DirUp, DirDown, DirLeft, DirRight int
 }
