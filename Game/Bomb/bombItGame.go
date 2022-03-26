@@ -5,8 +5,6 @@ import (
 	"image"
 	_ "image/png"
 
-	
-
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/jonasbabadilla/bombit/imageResources"
 )
@@ -23,6 +21,7 @@ const (
 )
 
 var options *ebiten.DrawImageOptions
+
 //var width, height int
 
 type Game struct {
@@ -49,11 +48,11 @@ func (g *Game) Update() error {
 func (g *Game) Draw(screen *ebiten.Image) {
 
 	var x, y float64
-	x += float64(g.input.DirLeft+g.input.DirRight)
-	y += float64(g.input.DirUp+g.input.DirDown)
-	
+	x += float64(g.input.DirLeft + g.input.DirRight)
+	y += float64(g.input.DirUp + g.input.DirDown)
+
 	options.GeoM.Translate(x, y)
-	
+
 	screen.DrawImage(character, options)
 }
 
@@ -62,7 +61,6 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
 	img, _, _ := image.Decode(bytes.NewReader(imageResources.StartButton_png))
 
 	character = ebiten.NewImageFromImage(img)
-	
 
 	return screenWidth, screenHeight
 }
